@@ -1,0 +1,131 @@
+/* =========================
+   BASE CARD
+========================= */
+
+.ui-card {
+  background: #ffffff;
+  color: #0f172a;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.04),
+    0 6px 20px rgba(0,0,0,0.06);
+
+  transition: all 0.25s ease;
+}
+
+.ui-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.ui-card-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+
+  padding: 24px 24px 0 24px;
+}
+
+.ui-card-header.with-border {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 24px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.ui-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.ui-card-description {
+  font-size: 14px;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+
+/* =========================
+   ACTION
+========================= */
+
+.ui-card-action {
+  align-self: flex-start;
+  justify-self: end;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.ui-card-content {
+  padding: 0 24px;
+}
+
+.ui-card-content:last-child {
+  padding-bottom: 24px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.ui-card-footer {
+  display: flex;
+  align-items: center;
+
+  padding: 0 24px 24px 24px;
+}
+
+.ui-card-footer.with-border {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 24px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .ui-card {
+    gap: 16px;
+  }
+
+  .ui-card-header {
+    padding: 16px 16px 0 16px;
+  }
+
+  .ui-card-content {
+    padding: 0 16px;
+  }
+
+  .ui-card-footer {
+    padding: 0 16px 16px 16px;
+  }
+}

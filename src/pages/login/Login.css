@@ -1,0 +1,130 @@
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(14, 116, 144, 0.35), transparent 35%),
+    radial-gradient(circle at 100% 100%, rgba(5, 150, 105, 0.28), transparent 35%),
+    linear-gradient(130deg, #f8fafc, #edf5f0);
+}
+
+.login-shell {
+  width: min(980px, 100%);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+  background: #ffffff;
+}
+
+.login-marketing {
+  padding: 2rem;
+  background: linear-gradient(140deg, #0f3a62, #0c7e6f);
+  color: #f8fafc;
+}
+
+.login-marketing h1 {
+  font-size: clamp(1.8rem, 1.2rem + 1.8vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.login-marketing p {
+  margin-top: 0.75rem;
+  color: #dbeafe;
+  line-height: 1.6;
+}
+
+.login-marketing ul {
+  margin: 1.2rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.5rem;
+  color: #d1fae5;
+}
+
+.login-card {
+  padding: 2rem;
+}
+
+.login-brand h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.login-brand p {
+  margin: 0.45rem 0 0;
+  color: #475569;
+}
+
+.login-form {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.login-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.login-field label {
+  color: #0f172a;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.login-field input {
+  border: 1px solid #cbd5e1;
+  border-radius: 11px;
+  padding: 0.7rem 0.78rem;
+  font-size: 0.95rem;
+}
+
+.login-field input:focus-visible {
+  outline: 3px solid rgba(12, 126, 111, 0.18);
+}
+
+.login-error {
+  padding: 0.65rem 0.78rem;
+  border-radius: 11px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.85rem;
+}
+
+.login-submit {
+  border: none;
+  border-radius: 11px;
+  background: #0c7e6f;
+  color: #fff;
+  padding: 0.72rem 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-submit:hover:not(:disabled) {
+  background: #0a675b;
+}
+
+.login-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+@media (max-width: 900px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .login-marketing {
+    padding: 1.3rem;
+  }
+
+  .login-card {
+    padding: 1.3rem;
+  }
+}

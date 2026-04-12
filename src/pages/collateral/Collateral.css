@@ -1,0 +1,189 @@
+.collateral-container {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.error-banner {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+}
+
+.collateral-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.stat-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #2563eb;
+}
+
+.stat-icon.green {
+  color: #15803d;
+}
+
+.stat-icon.red {
+  color: #b91c1c;
+}
+
+.stat-icon.purple {
+  color: #7c3aed;
+}
+
+.stat-number {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.stat-label {
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+}
+
+.card-total-value {
+  background: linear-gradient(135deg, #f0fdfa, #e0f2fe);
+}
+
+.total-value-label {
+  color: #0f766e;
+  font-size: 0.76rem;
+}
+
+.total-value-amount {
+  margin-top: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.filter-row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.filter-row-fill {
+  flex: 1;
+}
+
+.filter-select-wrapper {
+  width: 220px;
+}
+
+.description-cell {
+  max-width: 250px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.collateral-badge {
+  border-radius: 999px;
+  padding: 0.2rem 0.58rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.collateral-badge.held {
+  background: #dbeafe;
+  border-color: #bfdbfe;
+  color: #1e40af;
+}
+
+.collateral-badge.returned {
+  background: #dcfce7;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.collateral-badge.forfeited {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.collateral-badge.sold {
+  background: #f3e8ff;
+  border-color: #e9d5ff;
+  color: #7e22ce;
+}
+
+.form-sections,
+.detail-sections {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.detail-col-span-2 {
+  grid-column: span 2;
+}
+
+.detail-label {
+  color: var(--color-text-muted);
+  font-size: 0.74rem;
+}
+
+.detail-value {
+  margin-top: 0.2rem;
+  font-weight: 600;
+}
+
+.detail-value-lg {
+  font-size: 1.1rem;
+}
+
+.detail-status-wrap {
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 1180px) {
+  .collateral-stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .filter-select-wrapper {
+    width: 100%;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-col-span-2 {
+    grid-column: auto;
+  }
+
+  .collateral-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .collateral-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

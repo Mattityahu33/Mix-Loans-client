@@ -1,0 +1,125 @@
+.clients-container {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.error-banner {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+}
+
+.truncate-cell {
+  max-width: 200px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.metrics-mini {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.metrics-mini strong {
+  font-size: 0.82rem;
+}
+
+.metrics-mini span {
+  color: var(--color-text-muted);
+  font-size: 0.77rem;
+}
+
+.risk-badge {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.22rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.risk-badge.low {
+  background: #dcfce7;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.risk-badge.medium {
+  background: #fef3c7;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.risk-badge.high {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.form-sections {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.detail-sections {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.detail-label {
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+}
+
+.detail-value {
+  margin-top: 0.2rem;
+  font-weight: 600;
+}
+
+.detail-col-span-2 {
+  grid-column: span 2;
+}
+
+.clients-loan-history {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.clients-loan-history th,
+.clients-loan-history td {
+  padding: 0.7rem;
+  border-bottom: 1px solid var(--color-border-soft);
+  text-align: left;
+}
+
+.clients-loan-history th {
+  background: var(--color-surface-alt);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.no-loans-message {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 1.2rem;
+}
+
+@media (max-width: 880px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-col-span-2 {
+    grid-column: auto;
+  }
+}
