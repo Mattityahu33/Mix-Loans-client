@@ -11,9 +11,10 @@ import {
   X,
   History
 } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './Styles.css'; // Import the CSS file
 import { useAuth } from '../context/AuthContext';
+import { getUnreadNotificationCount } from '../services/notificationService';
 
 
 
@@ -31,7 +32,37 @@ const navigation = [
 export function DashboardLayout({ children }) {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
   const { admin, logout } = useAuth();
+
+  const refreshUnreadCount = useCallback(async () => {
+    try {
+      const count = await getUnreadNotificationCount();
+      setUnreadCount(count);
+    } catch {
+      setUnreadCount(0);
+    }
+  }, []);
+
+  useEffect(() => {
+    refreshUnreadCount();
+  }, [location.pathname, refreshUnreadCount]);
+
+  useEffect(() => {
+    const onNotificationsUpdated = (event) => {
+      const nextCount = event?.detail?.unreadCount;
+      if (typeof nextCount === 'number') {
+        setUnreadCount(Math.max(0, nextCount));
+        return;
+      }
+      refreshUnreadCount();
+    };
+
+    window.addEventListener('notifications:updated', onNotificationsUpdated);
+    return () => {
+      window.removeEventListener('notifications:updated', onNotificationsUpdated);
+    };
+  }, [refreshUnreadCount]);
   
   const currentDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
@@ -109,7 +140,9 @@ export function DashboardLayout({ children }) {
               <div className="date">{currentDate}</div>
               <Link to="/notifications" className="notification-link">
                 <Bell className="icon" />
-                <span className="notification-badge">!</span>
+                {unreadCount > 0 ? (
+                  <span className="notification-badge">{unreadCount > 99 ? '99+' : unreadCount}</span>
+                ) : null}
               </Link>
             </div>
           </div>

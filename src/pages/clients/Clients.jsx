@@ -12,7 +12,6 @@ import ResponsiveDataTable from '../../components/shared/ResponsiveDataTable';
 import './Clients.css';
 
 const emptyForm = {
-  id: '',
   name: '',
   phone: '',
   id_number: '',
@@ -92,7 +91,14 @@ export default function Clients() {
   const handleCreateClient = async () => {
     try {
       setSaving(true);
-      await createClient(formData);
+      await createClient({
+        name: formData.name,
+        phone: formData.phone,
+        id_number: formData.id_number,
+        address: formData.address,
+        risk_level: formData.risk_level,
+        notes: formData.notes,
+      });
       setIsAddDialogOpen(false);
       resetForm();
       await loadClients();
@@ -106,7 +112,6 @@ export default function Clients() {
   const handleEditClick = (client) => {
     setSelectedClient(client);
     setFormData({
-      id: client.id,
       name: client.name,
       phone: client.phone,
       id_number: client.nrc,
@@ -153,19 +158,6 @@ export default function Clients() {
   const renderClientForm = (onSubmit, isEditing = false) => (
     <div className="form-sections">
       <div className="form-grid">
-        {!isEditing ? (
-          <div className="form-group">
-            <label className="form-label" htmlFor="id">
-              Client ID *
-            </label>
-            <input
-              className="input"
-              id="id"
-              value={formData.id}
-              onChange={(event) => handleInputChange('id', event.target.value)}
-            />
-          </div>
-        ) : null}
         <div className="form-group">
           <label className="form-label" htmlFor="name">
             Full Name *

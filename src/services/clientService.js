@@ -29,7 +29,8 @@ export const getClientLoans = async (id) => {
 };
 
 export const createClient = async (clientData) => {
-  const response = await API.post('/clients', clientData);
+  const { id, client_id, clientId, ...payload } = clientData || {};
+  const response = await API.post('/clients', payload);
   return mapClient(response.data.data);
 };
 

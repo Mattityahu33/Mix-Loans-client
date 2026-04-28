@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, Bell, ShieldAlert } from 'lucide-react';
-import { getNotifications } from '../../services/notificationService';
+import { getNotifications, markAllNotificationsAsRead } from '../../services/notificationService';
 import PageHeader from '../../components/shared/PageHeader';
 import './Notifications.css';
 
@@ -17,17 +17,40 @@ export default function Notifications() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchNotifications = async () => {
       try {
         setLoading(true);
-        setNotifications(await getNotifications({ status: 'unread' }));
+        setError(null);
+        const unreadNotifications = await getNotifications({ status: 'unread' });
+        if (!isMounted) return;
+
+        setNotifications(unreadNotifications);
+        window.dispatchEvent(
+          new CustomEvent('notifications:updated', { detail: { unreadCount: unreadNotifications.length } })
+        );
+
+        if (unreadNotifications.length > 0) {
+          await markAllNotificationsAsRead();
+          if (!isMounted) return;
+          setNotifications([]);
+          window.dispatchEvent(new CustomEvent('notifications:updated', { detail: { unreadCount: 0 } }));
+        }
       } catch (err) {
+        if (!isMounted) return;
         setError(err.response?.data?.message || 'Failed to load notifications');
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
     fetchNotifications();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const stats = useMemo(() => {
