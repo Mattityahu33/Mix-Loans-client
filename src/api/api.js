@@ -1,7 +1,14 @@
 import axios from 'axios';
 
+const rawApiBaseUrl =
+  import.meta.env.VITE_API_BASE_URL ??
+  import.meta.env.VITE_API_URL ??
+  'https://mix-loans.onrender.com';
+
+const normalizedApiBaseUrl = rawApiBaseUrl.replace(/\/+$/, '');
+
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: `${normalizedApiBaseUrl}/api`,
 });
 
 API.interceptors.request.use((config) => {
